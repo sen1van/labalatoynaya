@@ -136,6 +136,7 @@ function draw_timer() {
 }
 function draw_checker() {
     if (sqrt(2 * (length*20 ) / (sin(90 - angle) * (9.8 * (20*100)))) < secondsAfterStart) {
-        isStart = false
+        isStart = false;
+        secondsAfterStart = sqrt(2 * (length*20 ) / (sin(90 - angle) * (9.8 * (20*100))));
     }
 }
