@@ -24,11 +24,12 @@ function setup() {
     canvas.mousePressed(startMove);
     canvas.mouseReleased(stopMove);
     canvas.mouseOut(stopMove);
+
 }
 
 function draw() {
     background(CLEAR);
-    
+
     if (isMove) {
         x += int(mouseX - moveStartX);
         y += int(mouseY - moveStartY);
