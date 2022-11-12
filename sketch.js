@@ -23,6 +23,7 @@ function setup() {
     frameRate(60);
     canvas.mousePressed(startMove);
     canvas.mouseReleased(stopMove);
+    canvas.mouseOut(stopMove);
 }
 
 function draw() {
@@ -161,6 +162,5 @@ function startMove() {
 }
 function stopMove() {
     isMove = false;
-    moveStartX = 0;
-    moveStartY = 0;
+
 }
