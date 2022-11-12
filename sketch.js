@@ -27,15 +27,15 @@ function setup() {
 
 function draw() {
     background(CLEAR);
-
-    draw_stand();
-    push();
+    
     if (isMove) {
         x += int(mouseX - moveStartX);
         y += int(mouseY - moveStartY);
         moveStartX = mouseX;
         moveStartY = mouseY;
     }
+    draw_stand();
+    push();
     translate(x, y);
     rotate(90 - angle);
     draw_ball(get_position(secondsAfterStart));
@@ -123,7 +123,7 @@ function start() {
     secondsAfterStart = 0
     isStart = true
 }
-function pause() {
+function doPause() {
     if (isStart) {
         saveFps = frameCount;
         isStart = false;
