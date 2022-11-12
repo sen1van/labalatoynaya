@@ -8,15 +8,21 @@ let secondsAfterStart = 0;
 
 let isStart = false;
 
+let isMove = false;
+let moveStartX = 0;
+let moveStartY = 0;
+
 const CLEAR = 255;
-const X = 60;
-const Y = 100;
+var x = 60;
+var y = 100;
 function setup() {
     angleMode(DEGREES);
     var canvas = createCanvas(500, 500);
     canvas.parent('view');
     stroke(20);
     frameRate(60);
+    canvas.mousePressed(startMove);
+    canvas.mouseReleased(stopMove);
 }
 
 function draw() {
@@ -24,7 +30,13 @@ function draw() {
 
     draw_stand();
     push();
-    translate(X, Y);
+    if (isMove) {
+        x += int(mouseX - moveStartX);
+        y += int(mouseY - moveStartY);
+        moveStartX = mouseX;
+        moveStartY = mouseY;
+    }
+    translate(x, y);
     rotate(90 - angle);
     draw_ball(get_position(secondsAfterStart));
     draw_line();
@@ -52,7 +64,6 @@ function keyReleased() {
         }
     }
     if (document.getElementById("tickPerSecondInput").value) {
-        console.log("TPS = " + document.getElementById("tickPerSecondInput").value);
         setFrameRate(int(document.getElementById("tickPerSecondInput").value));
     }
     if (document.getElementById("SecondInTickInput").value) {
@@ -61,13 +72,13 @@ function keyReleased() {
 
 }
 
-function draw_ball(x) {
+function draw_ball(position) {
     fill(CLEAR)
     stroke(20)
     if (document.getElementById("is_dot").checked) {
-        circle(x, -8, 10);
+        circle(position, -8, 10);
     } else {
-        square(x - 5, -12, 10)
+        square(position - 5, -12, 10)
     }
 }
 
@@ -99,7 +110,7 @@ function draw_line() {
 function draw_stand() {
     noStroke();
     fill(20);
-    rect(0, Y, X, 500 - Y, 0, 0, 0, 10);
+    rect(0, y, x, 500 - y, 0, 0, 0, 10);
     noFill();
 }
 
@@ -141,4 +152,15 @@ function draw_checker() {
         isStart = false;
         secondsAfterStart = sqrt(2 * (length * 20) / (sin(90 - angle) * (9.8 * (20 * 100))));
     }
+}
+
+function startMove() {
+    isMove = true;
+    moveStartX = mouseX;
+    moveStartY = mouseY;
+}
+function stopMove() {
+    isMove = false;
+    moveStartX = 0;
+    moveStartY = 0;
 }

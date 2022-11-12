@@ -12,10 +12,10 @@
     <div class="card position-absolute top-50 start-50 translate-middle p-2 container-md " style="max-width: 900px;">
         <h2 class="text-center">Лабараторная работа, Дмитрий Леонтьев</h2>
         <div class="row">
-            <div class="col ms-3">
+            <div class="col ms-3 m">
                 <div id="view"></div>
             </div>
-            <div class="col overflow-auto " style="min-width:300px">
+            <div class="col overflow-auto" style="min-width:300px">
                 <div class="form-floating mt-5 me-5">
                     <input class="form-control" id="angleInput" placeholder="Угол наклона">
                     <label for="floatingInput">Угол наклона</label>
@@ -26,8 +26,8 @@
                 </div>
 
 
-
-                <div class="form-floating mt-4 me-5">
+                <p class="mt-5 mb-0">Лучше ставить больше 10</p>
+                <div class="form-floating me-5">
                     <input class="form-control" id="tickPerSecondInput" placeholder="Тиков в секунду">
                     <label for="floatingInput">Тиков в секунду</label>
                 </div>
@@ -35,7 +35,7 @@
                     <input class="form-control" id="SecondInTickInput" placeholder="Внутренних секунд в тик">
                     <label for="floatingInput">Внутренних секунд в тик</label>
                 </div>
-                <div class="text-center me-5 mt-4">
+                <div class="text-center me-5 mt-3">
                     <div class="row">
                         <div class="col">
                             <input class="btn btn-outline-danger" value="стоп" onclick="stop()" type="button">
@@ -44,11 +44,11 @@
                             <input class="btn btn-outline-success" value="старт" onclick="start()" type="button">
                         </div>
                         <div class="col">
-                            <input class="btn btn-outline-secondary" value="пауза" onclick="pause()" type="button">
+                            <input class="btn btn-outline-secondary" value="пауза" onclick="doPause()" type="button">
                         </div>
                     </div>
                 </div>
-                <div class="form-check mt-4">
+                <div class="form-check mt-3">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="is_dot" checked>
                     <label class="form-check-label" for="flexRadioDefault1">
                         Точка
