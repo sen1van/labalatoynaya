@@ -21,9 +21,7 @@ function setup() {
 
 function draw() {
     background(CLEAR);
-    if (isStart) {
-        secondsAfterStart = frameCount * secondsAtTick
-    }
+
     draw_stand();
     push();
     translate(X, Y);
@@ -32,7 +30,11 @@ function draw() {
     draw_line();
     pop();
     draw_timer();
-    draw_checker()
+
+    if (isStart) {
+        secondsAfterStart = frameCount * secondsAtTick
+        draw_checker();
+    }
 
 
 }
@@ -135,8 +137,8 @@ function draw_timer() {
 
 }
 function draw_checker() {
-    if (sqrt(2 * (length*20 ) / (sin(90 - angle) * (9.8 * (20*100)))) < secondsAfterStart) {
+    if (sqrt(2 * (length * 20) / (sin(90 - angle) * (9.8 * (20 * 100)))) < secondsAfterStart) {
         isStart = false;
-        secondsAfterStart = sqrt(2 * (length*20 ) / (sin(90 - angle) * (9.8 * (20*100))));
+        secondsAfterStart = sqrt(2 * (length * 20) / (sin(90 - angle) * (9.8 * (20 * 100))));
     }
 }
