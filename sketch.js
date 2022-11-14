@@ -7,6 +7,8 @@ let secondsAtTick = 0.002;
 let secondsAfterStart = 0;
 
 let isStart = false;
+let isEnd = true;
+
 
 let isMove = false;
 let moveStartX = 0;
@@ -29,8 +31,8 @@ function setup() {
 
 function draw() {
     background(CLEAR);
-
-    if (isMove) {
+    trackBall();
+    if (isMove && !document.getElementById("IsTrack").checked) {
         x += int(mouseX - moveStartX);
         y += int(mouseY - moveStartY);
         moveStartX = mouseX;
@@ -121,23 +123,26 @@ function get_position(secounds) {
 }
 
 function start() {
-    frameCount = 0
-    secondsAfterStart = 0
-    isStart = true
+    frameCount = 0;
+    secondsAfterStart = 0;
+    isStart = true;
+    isEnd = false;
 }
 function doPause() {
-    if (isStart) {
-        saveFps = frameCount;
-        isStart = false;
-    } else {
-        frameCount = saveFps;
-        isStart = true;
+    if (!isEnd) {
+        if (isStart) {
+            saveFps = frameCount;
+            isStart = false;
+        } else {
+            frameCount = saveFps;
+            isStart = true;
+        }
     }
 }
 function stop() {
-    frameCount = 0
-    secondsAfterStart = 0
-    isStart = false
+    frameCount = 0;
+    secondsAfterStart = 0;
+    isStart = false;
 }
 function draw_timer() {
     stroke(CLEAR)
@@ -150,18 +155,28 @@ function draw_timer() {
 
 }
 function draw_checker() {
-    if (sqrt(2 * (length * 20) / (sin(90 - angle) * (9.8 * (20 * 100)))) < secondsAfterStart) {
+    if (sqrt(2 * (length * 20) / (sin(90 - angle) * (9.8 * (20 * 100)))) < secondsAfterStart && document.getElementById("AutoStop").checked) {
         isStart = false;
+        isEnd = true;
         secondsAfterStart = sqrt(2 * (length * 20) / (sin(90 - angle) * (9.8 * (20 * 100))));
     }
 }
 
 function startMove() {
     isMove = true;
+    isEnd = false
     moveStartX = mouseX;
     moveStartY = mouseY;
 }
 function stopMove() {
     isMove = false;
+    isEnd = true;
 
+}
+function trackBall(){
+    if (document.getElementById("IsTrack").checked){
+        x = sin(angle) * -get_position(secondsAfterStart) + 250;
+        y = cos(angle) * -get_position(secondsAfterStart) + 250;
+        console.log(1)
+    }
 }

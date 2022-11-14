@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
     <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
     <script src="sketch.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -13,11 +13,11 @@
     <div class="card position-absolute top-50 start-50 translate-middle p-2 container-md " style="max-width: 900px;">
         <h2 class="text-center">Лабараторная работа, Дмитрий Леонтьев</h2>
         <div class="row">
-            <div class="col ms-3 m">
+            <div class="col ms-3 m ">
                 <div id="view"></div>
             </div>
             <div class="col overflow-auto" style="min-width:300px">
-                <div class="form-floating mt-5 me-5">
+                <div class="form-floating mt-4 me-5">
                     <input class="form-control" id="angleInput" placeholder="Угол наклона">
                     <label for="floatingInput">Угол наклона</label>
                 </div>
@@ -61,7 +61,18 @@
                         Брусок (без силы трения)
                     </label>
                 </div>
-
+                <div class="form-check mb-0">
+                    <input class="form-check-input" type="checkbox" value="" id="AutoStop" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Авто остановка
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="IsTrack" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Следить за бруском
+                    </label>
+                </div>
             </div>
         </div>
 
